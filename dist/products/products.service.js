@@ -8,16 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsService = void 0;
 const common_1 = require("@nestjs/common");
+const ProductsRepo_1 = require("../persistencia/repos/ProductsRepo");
+const prodsRepo = ProductsRepo_1.default.getInstancia();
 let ProductsService = class ProductsService {
     constructor() {
         this.storeProducts = [];
     }
-    getProducts() {
-        return this.storeProducts;
+    async getProducts() {
+        let prods = await prodsRepo.getAll();
+        return prods;
     }
-    createProduct(product) {
-        this.storeProducts.push(product);
-        return product;
+    async createProduct(product) {
+        let prodAdd = await prodsRepo.add(product);
+        return prodAdd;
+    }
+    async deleteProduct(id) {
+        let resp = await prodsRepo.removeById(id);
+        return resp;
+    }
+    async updateProduct(idParaReemplazar, prodMod) {
+        let resp = await prodsRepo.updateById(idParaReemplazar, prodMod);
+        return resp;
     }
 };
 ProductsService = __decorate([

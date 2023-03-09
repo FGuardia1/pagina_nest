@@ -4,6 +4,8 @@ import { ProductsService } from './products.service';
 export declare class ProductsController {
     private productService;
     constructor(productService: ProductsService);
-    getProducts(): IProduct[];
-    setProduct(newProduct: CreateProductDto): IProduct;
+    getProducts(): Promise<IProduct[]>;
+    setProduct(newProduct: CreateProductDto): Promise<IProduct>;
+    deleteProduct(id: string): Promise<any>;
+    updateProduct(id: string, updProduct: CreateProductDto): Promise<any>;
 }

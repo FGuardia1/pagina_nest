@@ -1,0 +1,26 @@
+[
+  {
+    "title": "lapiz",
+    "price": "200",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-64.png",
+    "id": 1
+  },
+  {
+    "title": "lapiz",
+    "price": "200",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/pencil-pen-stationery-school-64.png",
+    "id": 2
+  },
+  {
+    "title": "calculadora",
+    "price": "4000",
+    "thumbnail": "imagenNueva.jpg",
+    "id": 3
+  },
+  {
+    "title": "prod1Modificado",
+    "price": 32,
+    "thumbnail": "image.jpg",
+    "id": 4
+  }
+]
