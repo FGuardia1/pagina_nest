@@ -7,7 +7,6 @@ const prodsRepo = ProductosRepo.getInstancia();
 
 @Injectable()
 export class ProductsService {
-  private storeProducts = [];
   async getProducts(): Promise<IProduct[]> {
     let prods = await prodsRepo.getAll();
     return prods;

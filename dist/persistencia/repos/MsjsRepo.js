@@ -40,8 +40,8 @@ class MsjsRepo {
         return new Msj_js_1.default(dto);
     }
     async add(msjNew) {
-        msjNew.setId(await this.generateId());
-        await __classPrivateFieldGet(this, _MsjsRepo_dao, "f").save((0, MsgDTO_js_1.asDto)(msjNew));
+        msjNew.id = await this.generateId();
+        return await __classPrivateFieldGet(this, _MsjsRepo_dao, "f").save((0, MsgDTO_js_1.asDto)(msjNew));
     }
     async removeById(idBuscado) {
         const removida = await __classPrivateFieldGet(this, _MsjsRepo_dao, "f").deleteById(idBuscado);

@@ -1,5 +1,5 @@
 export default class Msj {
-    constructor({ email, texto, date, nombre, apellido, edad, alias, avatar }: {
+    constructor({ email, texto, date, nombre, apellido, edad, alias, avatar, id, }: {
         email: any;
         texto: any;
         date: any;
@@ -8,6 +8,7 @@ export default class Msj {
         edad: any;
         alias: any;
         avatar: any;
+        id?: string;
     });
     id: string;
     email: any;

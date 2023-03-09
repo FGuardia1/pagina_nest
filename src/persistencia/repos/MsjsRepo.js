@@ -1,8 +1,8 @@
-import Msj from "../modelos/Msj.js";
+import Msj from '../modelos/Msj.js';
 
-import MsjsDaoFactory from "../factory/daos/Msg/MsjsDaoFactory.js";
+import MsjsDaoFactory from '../factory/daos/Msg/MsjsDaoFactory.js';
 
-import { asDto } from "../factory/dtos/MsgDTO.js";
+import { asDto } from '../factory/dtos/MsgDTO.js';
 
 let instancia = null;
 
@@ -35,9 +35,9 @@ export default class MsjsRepo {
   }
 
   async add(msjNew) {
-    msjNew.setId(await this.generateId());
+    msjNew.id = await this.generateId();
 
-    await this.#dao.save(asDto(msjNew));
+    return await this.#dao.save(asDto(msjNew));
   }
 
   async removeById(idBuscado) {

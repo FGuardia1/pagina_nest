@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Msj {
-    constructor({ email, texto, date, nombre, apellido, edad, alias, avatar }) {
-        this.id = "";
+    constructor({ email, texto, date, nombre, apellido, edad, alias, avatar, id = '', }) {
+        this.id = id;
         this.email = email;
         this.nombre = nombre;
         this.apellido = apellido;

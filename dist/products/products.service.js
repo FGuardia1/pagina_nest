@@ -11,9 +11,6 @@ const common_1 = require("@nestjs/common");
 const ProductsRepo_1 = require("../persistencia/repos/ProductsRepo");
 const prodsRepo = ProductsRepo_1.default.getInstancia();
 let ProductsService = class ProductsService {
-    constructor() {
-        this.storeProducts = [];
-    }
     async getProducts() {
         let prods = await prodsRepo.getAll();
         return prods;

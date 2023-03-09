@@ -3,7 +3,7 @@ export default class MsjsRepo {
     generateId(): Promise<number>;
     getAll(): Promise<any>;
     getById(idBuscado: any): Promise<Msj>;
-    add(msjNew: any): Promise<void>;
+    add(msjNew: any): Promise<any>;
     removeById(idBuscado: any): Promise<Msj>;
     removeAll(): Promise<void>;
     #private;
