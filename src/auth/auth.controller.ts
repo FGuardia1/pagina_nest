@@ -12,24 +12,27 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
-@Controller()
+@Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @UseGuards(AuthGuard('local'))
-  @Post('auth/login')
+  @Post('/login')
   async login(@Request() req, @Res({ passthrough: true }) response) {
     let token = await this.authService.login(req.user);
     response.cookie('access_token', token.access_token, {
       maxAge: 1000 * 60 * 60,
     });
-
-    return token;
+    response.cookie('username', req.user.username, {
+      maxAge: 1000 * 60 * 60,
+    });
+    return response.redirect('/home');
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('auth/test')
-  a(@Req() request) {
-    return 'holaaa';
+  @Get('/logout')
+  async logout(@Res({ passthrough: true }) response) {
+    response.cookie('access_token', '', { expires: new Date() });
+    response.cookie('username', '', { expires: new Date() });
+    return response.redirect('/login');
   }
 }

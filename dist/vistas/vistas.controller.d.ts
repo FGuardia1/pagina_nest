@@ -4,8 +4,10 @@ export declare class VistasController {
     constructor(appService: VistasService);
     root(): Promise<void>;
     rootRegister(): Promise<void>;
-    rootHome(): Promise<{
+    rootHome(req: any): Promise<{
+        nombre: any;
         productos: any;
         msjs: any;
     }>;
+    logout(response: any): Promise<any>;
 }

@@ -14,19 +14,6 @@
   {
     "title": "calculadora",
     "price": "4000",
-    "thumbnail": "imagenNueva.jpg",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-64.png",
     "id": 3
-  },
-  {
-    "title": "prod1Modificado",
-    "price": 32,
-    "thumbnail": "image.jpg",
-    "id": 4
-  },
-  {
-    "title": "aaa",
-    "price": "34",
-    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-64.png",
-    "id": 5
-  }
-]
+  }]

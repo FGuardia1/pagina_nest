@@ -16,7 +16,6 @@ exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const passport_1 = require("@nestjs/passport");
-const jwt_auth_guard_1 = require("./jwt-auth.guard");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -26,15 +25,20 @@ let AuthController = class AuthController {
         response.cookie('access_token', token.access_token, {
             maxAge: 1000 * 60 * 60,
         });
-        return token;
+        response.cookie('username', req.user.username, {
+            maxAge: 1000 * 60 * 60,
+        });
+        return response.redirect('/home');
     }
-    a(request) {
-        return 'holaaa';
+    async logout(response) {
+        response.cookie('access_token', '', { expires: new Date() });
+        response.cookie('username', '', { expires: new Date() });
+        return response.redirect('/login');
     }
 };
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
-    (0, common_1.Post)('auth/login'),
+    (0, common_1.Post)('/login'),
     __param(0, (0, common_1.Request)()),
     __param(1, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),
@@ -42,15 +46,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, common_1.Get)('auth/test'),
-    __param(0, (0, common_1.Req)()),
+    (0, common_1.Get)('/logout'),
+    __param(0, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], AuthController.prototype, "a", null);
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "logout", null);
 AuthController = __decorate([
-    (0, common_1.Controller)(),
+    (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 exports.AuthController = AuthController;
