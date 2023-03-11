@@ -4,10 +4,4 @@ import { AppService } from './app.service';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Get('/home')
-  @Render('index')
-  async root() {
-    return await this.appService.getHomeInfo();
-  }
 }

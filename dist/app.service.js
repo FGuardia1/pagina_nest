@@ -8,20 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
-const ProductsRepo_1 = require("./persistencia/repos/ProductsRepo");
-const prodsRepo = ProductsRepo_1.default.getInstancia();
-const MsjsRepo_1 = require("./persistencia/repos/MsjsRepo");
-const msjsRepo = MsjsRepo_1.default.getInstancia();
 let AppService = class AppService {
-    async getHomeInfo() {
-        let prods = await prodsRepo.getAll();
-        let msjs = await msjsRepo.getAll();
-        msjs = msjs.map((e) => {
-            e.date = new Date(e.date).toLocaleString();
-            return e;
-        });
-        return { productos: prods, msjs };
-    }
     getHello() {
         return 'Hello World!';
     }

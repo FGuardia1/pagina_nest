@@ -12,11 +12,22 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const products_module_1 = require("./products/products.module");
 const messages_module_1 = require("./messages/messages.module");
+const mongoose_1 = require("@nestjs/mongoose");
+const users_module_1 = require("./users/users.module");
+const auth_module_1 = require("./auth/auth.module");
+const vistas_module_1 = require("./vistas/vistas.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [products_module_1.ProductsModule, messages_module_1.MessagesModule],
+        imports: [
+            products_module_1.ProductsModule,
+            messages_module_1.MessagesModule,
+            mongoose_1.MongooseModule.forRoot('mongodb+srv://fer:contra123@cluster0.emeikir.mongodb.net/?retryWrites=true&w=majority&dbName=ecommerceDesafio'),
+            users_module_1.UsersModule,
+            auth_module_1.AuthModule,
+            vistas_module_1.VistasModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

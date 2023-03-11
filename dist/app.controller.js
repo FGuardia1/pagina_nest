@@ -16,17 +16,7 @@ let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    async root() {
-        return await this.appService.getHomeInfo();
-    }
 };
-__decorate([
-    (0, common_1.Get)('/home'),
-    (0, common_1.Render)('index'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], AppController.prototype, "root", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
