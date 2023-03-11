@@ -1,20 +1,11 @@
 import ProductsDaoFile from './ProductsDaoFile.js';
 import ProductsDaoMem from './ProductsDaoMem.js';
 
-/* import parseArgs from 'minimist';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const options = {
-  default: { opcionDao: 'Mem' },
-};
-const argumentos = parseArgs(process.argv.slice(2), options);
-
-const OPCION_DAO = argumentos.opcionDao;
-
- */
+const OPCION_DAO = process.env.OPCION_DAO;
 const rutaArchivoProds = './src/persistencia/dbs/products.txt';
-
-const OPCION_DAO = 'File';
-
 let dao;
 
 async function switch_inicio() {

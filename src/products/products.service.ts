@@ -17,12 +17,15 @@ export class ProductsService {
     return prodAdd;
   }
 
-  async deleteProduct(id) {
+  async deleteProduct(id: string): Promise<IProduct> {
     let resp = await prodsRepo.removeById(id);
     return resp;
   }
 
-  async updateProduct(idParaReemplazar, prodMod) {
+  async updateProduct(
+    idParaReemplazar: string,
+    prodMod: CreateProductDto,
+  ): Promise<IProduct> {
     let resp = await prodsRepo.updateById(idParaReemplazar, prodMod);
     return resp;
   }

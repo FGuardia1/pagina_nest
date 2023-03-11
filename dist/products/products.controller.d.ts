@@ -6,6 +6,6 @@ export declare class ProductsController {
     constructor(productService: ProductsService);
     getProducts(): Promise<IProduct[]>;
     setProduct(newProduct: CreateProductDto): Promise<IProduct>;
-    deleteProduct(id: string): Promise<any>;
-    updateProduct(id: string, updProduct: CreateProductDto): Promise<any>;
+    deleteProduct(id: string): Promise<IProduct>;
+    updateProduct(id: string, updProduct: CreateProductDto): Promise<IProduct>;
 }

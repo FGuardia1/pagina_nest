@@ -2,17 +2,11 @@ import MsjsDaoFile from './MsjsDaoFile.js';
 import MsjsDaoMem from './MsjsDaoMem.js';
 const rutaArchivoProds = './src/persistencia/dbs/msjs.txt';
 
-/* import parseArgs from 'minimist';
-const options = {
-  default: { opcionDao: 'Mem' },
-};
-const argumentos = parseArgs(process.argv.slice(2), options);
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const OPCION_DAO = argumentos.opcionDao;
+const OPCION_DAO = process.env.OPCION_DAO;
 
- */
-
-const OPCION_DAO = 'File';
 let dao;
 
 async function switch_inicio() {

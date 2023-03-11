@@ -3,6 +3,6 @@ import { IProduct } from 'src/interface/product.interface';
 export declare class ProductsService {
     getProducts(): Promise<IProduct[]>;
     createProduct(product: CreateProductDto): Promise<IProduct>;
-    deleteProduct(id: any): Promise<any>;
-    updateProduct(idParaReemplazar: any, prodMod: any): Promise<any>;
+    deleteProduct(id: string): Promise<IProduct>;
+    updateProduct(idParaReemplazar: string, prodMod: CreateProductDto): Promise<IProduct>;
 }

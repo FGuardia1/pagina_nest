@@ -59,7 +59,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, product_dto_1.CreateProductDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "updateProduct", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),

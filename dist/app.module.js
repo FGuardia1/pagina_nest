@@ -16,14 +16,22 @@ const mongoose_1 = require("@nestjs/mongoose");
 const users_module_1 = require("./users/users.module");
 const auth_module_1 = require("./auth/auth.module");
 const vistas_module_1 = require("./vistas/vistas.module");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            mongoose_1.MongooseModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                inject: [config_1.ConfigService],
+                useFactory: async (config) => ({
+                    uri: config.get('MONGO_ATLAS_URL'),
+                }),
+            }),
             products_module_1.ProductsModule,
             messages_module_1.MessagesModule,
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://fer:contra123@cluster0.emeikir.mongodb.net/?retryWrites=true&w=majority&dbName=ecommerceDesafio'),
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
             vistas_module_1.VistasModule,

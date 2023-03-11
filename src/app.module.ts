@@ -7,13 +7,22 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { VistasModule } from './vistas/vistas.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => ({
+        uri: config.get<string>('MONGO_ATLAS_URL'),
+      }),
+    }),
     ProductsModule,
     MessagesModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://fer:contra123@cluster0.emeikir.mongodb.net/?retryWrites=true&w=majority&dbName=ecommerceDesafio',
-    ),
+
     UsersModule,
     AuthModule,
     VistasModule,
